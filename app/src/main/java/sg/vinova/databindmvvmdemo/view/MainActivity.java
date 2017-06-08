@@ -6,11 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import sg.vinova.databindmvvmdemo.R;
 import sg.vinova.databindmvvmdemo.databinding.MainActivityBinding;
-import sg.vinova.databindmvvmdemo.model.User;
 import sg.vinova.databindmvvmdemo.viewmodel.MainViewModel;
 
 public class MainActivity extends AppCompatActivity {
-
 
 
     /**
@@ -21,10 +19,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MainActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        User user = new User("Ben","Truong");
         MainViewModel viewModel = new MainViewModel(this);
         binding.setViewModel(viewModel);
-        binding.setUser(user);
+        binding.setUser(viewModel.createDefaultUser());
     }
 
 

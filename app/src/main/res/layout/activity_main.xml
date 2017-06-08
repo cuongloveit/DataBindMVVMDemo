@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data class="MainActivityBinding">
 
         <variable
             name="user"
             type="sg.vinova.databindmvvmdemo.model.User" />
+
+
         <variable
             name="viewModel"
             type="sg.vinova.databindmvvmdemo.viewmodel.MainViewModel" />
@@ -26,11 +29,28 @@
             android:layout_height="wrap_content"
             android:text="@{user.lastName}" />
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.newFirstName}"
+            app:addTextChangedListener="@{viewModel.getFirstNameWatcher}"
+            android:hint="First Name"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.newLastName}"
+
+            app:addTextChangedListener="@{viewModel.getLastNameWatcher}"
+            android:hint="Last Name"/>
+
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:onClick="@{() -> viewModel.onClickButton(`Clicked`)}"
+
+            android:onClick="@{() -> viewModel.updateUser()}"
             android:text="Button" />
     </LinearLayout>
 </layout>
